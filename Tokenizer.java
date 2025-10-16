@@ -49,11 +49,32 @@ public class Tokenizer {
 
   /** Run short test */
   public static void main(String[] args) {
+    //testing some expressions
+    String[] testCases = {"(5+2)*20", "2.75 * 2", "log(x)/2", "(|A|+|B|)^2"};
+
+    //converts each expression into tokens and stores them in a queue
+    for (String test : testCases) {
+      Queue<Object> newTokens = readTokens(test);
+      System.out.println(newTokens);
+    }
+
     if (args.length == 0) {
       System.err.println("Usage:  java Tokenizer <expr>");
     } else {
       Queue<Object> queue = readTokens(args[0]);
       System.out.println(queue);
+
+      // Queue<Object> queueTwo = readTokens("(5+2)*20");
+      // System.out.println(queueTwo);
+
+      // Queue<Object> queueThree = readTokens("2.75 * 2");
+      // System.out.println(queueThree);
+
+      // Queue<Object> queueFour = readTokens("log(x)/2");
+      // System.out.println(queueFour);
+
+      // Queue<Object> queueFive = readTokens("(|A|+|B|)^2");
+      // System.out.println(queueFive);
     }
   }
 }
