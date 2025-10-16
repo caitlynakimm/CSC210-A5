@@ -18,7 +18,20 @@ public class CalculatePostfix {
                 Double firstOperand = stack.pop();
                 Double result;
 
+                if (operator == "+") {
+                    result = firstOperand + secondOperand;
+                } else if (operator == "-") {
+                    result = firstOperand - secondOperand;
+                } else if (operator == "*") {
+                    result = firstOperand * secondOperand;
+                } else if (operator == "/") {
+                    result = firstOperand / secondOperand;
+                } else if (operator == "^") {
+                    result = (int)pow(firstOperand, secondOperand);
+                }
                 
+                stack.push(result);
+                System.out.println(stack);
             }
         }
         
