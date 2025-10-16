@@ -9,8 +9,16 @@ public class CalculatePostfix {
                 stack.push(num);
             } else if (token instanceof Character) {
                 Character operator = (Character) token;
-                Object numBefore = tokens.remove();
-                Object numAfter = tokens.remove()+1;
+                
+                if (stack.size() < 2) {
+                    throw new IllegalArgumentException("Not enough numbers in the stack to process operator. Entered expression was malformed.");
+                }
+
+                Double secondOperand = stack.pop();
+                Double firstOperand = stack.pop();
+                Double result;
+
+                
             }
         }
         
