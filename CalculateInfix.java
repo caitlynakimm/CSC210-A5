@@ -12,11 +12,18 @@ public class CalculateInfix {
                 Double num = (Double) token;
                 outputQueue.add(num);
             } else if (token instanceof Character) {
-                Character topStackOperator = operatorStack.getTail();
+                Character c = (Character) token;
                 Character queueOperator = (Character) token;
-                while (topStackOperator instanceof Character &  precedence(topStackOperator) >= precedence(queueOperator)) {
-                    Character topOperator = operatorStack.pop();
-                    outputQueue.add(topOperator);
+                while (!operatorStack.isEmpty() && operatorStack.peek() != '(' && precedence(operatorStack.peek()) >= precedence(queueOperator)) {
+                    Character topStackOperator = operatorStack.pop();
+                    outputQueue.add(topStackOperator);
+                }
+                operatorStack.push(queueOperator);
+
+                if (c == '(') {
+                    operatorStack.push(c);
+                } else if (c == ')') {
+                    
                 }
             }
         } 
