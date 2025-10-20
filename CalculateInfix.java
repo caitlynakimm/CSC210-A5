@@ -28,7 +28,7 @@ public class CalculateInfix {
                 } else {
                     Character queueOperator = (Character) token;
 
-                    while (!operatorStack.isEmpty() && operatorStack.peek() != '(' && precedence(operatorStack.peek()) >= precedence(queueOperator)) {
+                    while (!operatorStack.isEmpty() && operatorStack.peek() != '(' && (precedence(operatorStack.peek()) > precedence(queueOperator) || (precedence(operatorStack.peek()) == precedence(queueOperator) && precedence(queueOperator) != 3))) {
                         Character topStackOperator = operatorStack.pop();
                         outputQueue.add(topStackOperator);
                     }
@@ -39,7 +39,7 @@ public class CalculateInfix {
         } 
 
         while (!operatorStack.isEmpty()) {
-            if (operatorStack.peek() == '(' | operatorStack.peek() == ')') {
+            if (operatorStack.peek() == '(' || operatorStack.peek() == ')') {
                 throw new IllegalArgumentException("No more tokens to read and token at the top of the stack is a parenthesis. There are mismatched parentheses.");
             } else {
                 outputQueue.add(operatorStack.pop());
@@ -52,11 +52,11 @@ public class CalculateInfix {
 
     public static int precedence(Character token) {
         //1 means highest precedence and 3 means lowest precedence
-        if (token == '^') {
+        if (token == '^') { //^ is right-associative and the other four operators are left-associative
             return 3;
-        } else if (token == '*' | token == '/') {
+        } else if (token == '*' || token == '/') {
             return 2;
-        } else if (token == '+' | token == '-') {
+        } else if (token == '+' || token == '-') {
             return 1;
         } return 0; //if operator isn't one of the above options (a parenthesis or unknown), return 0
     }
