@@ -83,7 +83,7 @@ public class CalculateInfix {
 
     /**
      * Main method for testing CalculateInfix class
-     * Tests inflix to postfix expression conversion with different expressions
+     * Tests infix to postfix expression conversion with different expressions
      * 
      * @param args Command line arguments
      */
