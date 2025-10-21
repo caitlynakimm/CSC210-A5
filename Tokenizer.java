@@ -47,7 +47,10 @@ public class Tokenizer {
     return queue;
   }
 
-  /** Run short test */
+  /**
+   * Runs short test
+   * @param args Command line arguments (first argument is tokenized)
+   */
   public static void main(String[] args) {
     //testing some expressions
     String[] testCases = {"(5+2)*20", "2.75 * 2", "log(x)/2", "(|A|+|B|)^2"};
